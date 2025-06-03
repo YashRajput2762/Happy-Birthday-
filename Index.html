@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Click for Surprise!</title>
+  <style>
+    body {
+      background-image: url('https://i.ibb.co/LdCmy4xf/6adb2e4713d2c97db52e4972793a8a20563d56acc1f3421ba01d3d5e618ba4b3-0.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      overflow: hidden;
+      cursor: pointer;
+    }
 
+    h1, p {
+      opacity: 0;
+      transition: opacity 1s ease-in-out, transform 0.5s;
+    }
+
+    .show h1 {
+      opacity: 1;
+      color: #ff1493;
+      font-size: 3em;
+      transform: scale(1.1);
+    }
+
+    .show p {
+      opacity: 1;
+      font-size: 1.5em;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      animation: fall 3s linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body onclick="revealWish()">
+  <h1>🎉 Happy Birthday, Fatima! 🎂</h1>
+  <p>Birthdays are a new start, a fresh beginning and a time to pursue new endeavors with new goals. Move forward with confidence and courage. You are a very special person. May today and all of your days be amazing!” 💖💻</p>
+
+  <script>
+    function revealWish() {
+      document.body.classList.add('show');
+      for (let i = 0; i < 100; i++) {
+        let confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+        confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+        confetti.style.width = confetti.style.height = Math.random() * 8 + 4 + 'px';
+        document.body.appendChild(confetti);
+      }
+      document.body.onclick = null;
+    }
+  </script>
+</body>
+</html>
